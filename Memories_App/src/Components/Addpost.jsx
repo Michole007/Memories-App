@@ -1,10 +1,38 @@
 import { useState } from "react";
+import axios from "axios";
 
 const Addpost = () => {
     const [creator, setCreator] = useState('');
     const [title, setTitle] = useState('');
     const [message, setMessage] = useState('');
     const [tag, setTag] = useState('');
+
+    const handleSubmit = (e) => {
+        e.preventDefault();
+      const memoryApp ={creator, title, message, tag};
+        console.log(memoryApp);
+
+        //form validation
+
+        if(title === '' || message === '' || tag === '' || creator === ''){
+            console.log('all the fields are required');
+            return; // break out of the code
+        }
+        //key and value
+        const formdata =    {
+            form_title: title,
+            form_message: message,
+            form_tag: tag,
+            form_creator: creator
+        }
+        //sending form data to server
+
+        axios.post ('http://localhost:5000/posts/create',formdata)
+        .then((response) => console.log(response))
+        .catch((err) =>console.error(err));
+
+        
+    }
   return (
     <div className="add_post" style={{ 
                 boxShadow: '1px 1px 1px 1px rgba(0.4 0.4 0.4 0.4)', 
@@ -14,7 +42,7 @@ const Addpost = () => {
              }}>
                 
               
-            <form>
+            <form onSubmit={handleSubmit}>
 
             <h3>Creating a Memory</h3>
             
