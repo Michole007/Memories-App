@@ -1,0 +1,30 @@
+
+*{
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+}
+
+body{
+    background-color: #330033;
+    
+}
+
+img{
+    height: 50px;
+    
+}
+.container{
+    width: 70%;
+    margin: 0 auto;
+}
+
+.logo{
+    padding: 5px;
+    background-color: #fffdd0;
+    text-align: center;
+    border-radius: 7px;
+    margin-top: 30px;
+    box-shadow: 3px;
+
+}
